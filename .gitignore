@@ -1,0 +1,40 @@
+# Credentials and local configuration
+**/.env
+**/.env.*
+!**/.env.example
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+
+# Private/runtime data
+**/data/
+**/logs/
+**/run/
+**/artifacts/
+**/outputs/
+**/*.db
+**/*.db-*
+**/*.sqlite
+**/*.sqlite3
+
+# Dependencies, environments, and generated output
+**/node_modules/
+**/.next/
+**/.npm-cache/
+**/.vinext/
+**/.wrangler/
+**/dist/
+**/build/
+**/coverage/
+**/.venv/
+**/venv/
+**/__pycache__/
+**/*.py[cod]
+**/*.egg-info/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log

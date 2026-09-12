@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { listJudgments } from "@/lib/db";
+export const dynamic="force-dynamic";
+export default function ReviewsPage(){const rows=listJudgments("","pending");return <><header className="page-head"><div><h1>待复盘</h1><div className="muted">{rows.length} 条判断等待用真实结果验证。</div></div></header><section className="panel">{rows.length?rows.map(r=>{const days=Math.floor((Date.now()-new Date(r.due_date+"T00:00:00").getTime())/86400000);return <div className="review-row" key={r.id}><div><div className="review-title">{r.symbol} <span className="badge">信心 {r.confidence}%</span></div><div className="review-thesis">{r.thesis}</div><div className="muted">{days>0?`已逾期 ${days} 天`:"今天到期"} · 到期日 {r.due_date}</div></div><Link className="button primary" href={`/judgments/${r.id}/review`}>开始复盘</Link></div>}):<div className="empty">目前没有待复盘记录。坚持记录，等待时间给出答案。</div>}</section></>}

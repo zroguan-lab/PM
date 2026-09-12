@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pm-btc"
+version = "0.1.0"
+description = "Polymarket BTC 5m mispricing detection research and execution core"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27,<1",
+    "numpy>=2.0,<3",
+    "polymarket-client>=0.7.1,<0.8",
+    "websockets>=15,<16",
+    "zstandard>=0.23,<1",
+]
+
+[project.optional-dependencies]
+ml = ["lightgbm>=4.5,<5"]
+live = ["py-clob-client-v2>=1.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+pm-btc = "pm_btc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
